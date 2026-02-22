@@ -24,6 +24,29 @@ return {
 			end,
 			desc = "Buffers",
 		},
+		{
+			"<leader>fs",
+			function()
+				require("telescope.builtin").lsp_document_symbols()
+			end,
+			desc = "Document symbols",
+		},
+		{
+			"<leader>fm",
+			function()
+				require("telescope.builtin").lsp_document_symbols({
+					symbols = { "class", "function", "method" },
+				})
+			end,
+			desc = "Functions, methods & classes",
+		},
+		{
+			"<leader>fS",
+			function()
+				require("telescope.builtin").lsp_workspace_symbols()
+			end,
+			desc = "Workspace symbols",
+		},
 	},
 	config = function()
 		-- Load Telescope core module
@@ -47,6 +70,14 @@ return {
 
 			-- Picker-specific configuration
 			pickers = {
+				lsp_document_symbols = {
+					sorting_strategy = "ascending",
+					symbol_width = 50,
+				},
+				lsp_workspace_symbols = {
+					sorting_strategy = "ascending",
+					symbol_width = 50,
+				},
 				find_files = {
 					-- Show hidden files (dotfiles)
 					hidden = true,

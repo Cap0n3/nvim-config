@@ -2,12 +2,13 @@
 
 return {
 	"neovim/nvim-lspconfig",
+	version = "v2.*",
 
 	event = { "BufReadPre", "BufNewFile" },
 
 	dependencies = {
 		"mason-org/mason.nvim",
-		"mason-org/mason-lspconfig.nvim",
+		{ "mason-org/mason-lspconfig.nvim", version = "v1.*" },
 	},
 
 	config = function()
