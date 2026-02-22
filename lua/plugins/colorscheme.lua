@@ -1,14 +1,14 @@
--- lua/plugins/colorscheme.lua
+-- Colorscheme plugin --
+
 return {
-  "ellisonleao/gruvbox.nvim", 
+	"ellisonleao/gruvbox.nvim",
 
-  priority = 1000,            -- Load first to avoid flicker
-  config = function()
-    -- Activate color in terminal
-    vim.opt.termguicolors = true
+	priority = 1000, -- Load first to avoid flicker
+	config = function()
+		-- Activate color in terminal
+		vim.opt.termguicolors = true
 
-    -- Apply theme
-    vim.cmd.colorscheme("gruvbox")
-  end,
+		-- Apply theme
+		vim.cmd.colorscheme("gruvbox")
+	end,
 }
-

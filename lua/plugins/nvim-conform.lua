@@ -34,6 +34,9 @@ return {
 			yaml = { "prettierd", "prettier", stop_after_first = true },
 			c = { "clang-format" },
 			cpp = { "clang-format" },
+			sh = { "shfmt" },
+			bash = { "shfmt" },
+			zsh = { "shfmt" },
 		},
 		-- Set default options
 		default_format_opts = {
