@@ -32,6 +32,7 @@ return {
 			scss = { "prettierd", "prettier", stop_after_first = true },
 			json = { "prettierd", "prettier", stop_after_first = true },
 			yaml = { "prettierd", "prettier", stop_after_first = true },
+			go = { "goimports", "gofmt" },
 			c = { "clang-format" },
 			cpp = { "clang-format" },
 			sh = { "shfmt" },

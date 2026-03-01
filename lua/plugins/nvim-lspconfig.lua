@@ -48,6 +48,7 @@ return {
 				"jsonls",
 				"yamlls",
 				"bashls",
+				"gopls",
 			},
 			handlers = {
 				-- Default handler: set up all servers with shared capabilities
