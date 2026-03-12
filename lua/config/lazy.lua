@@ -42,6 +42,8 @@ vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.autoread = true
+vim.opt.fileformat = "unix"
+vim.opt.fileformats = { "unix", "dos", "mac" }
 -- For code folding (treesitter)
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
