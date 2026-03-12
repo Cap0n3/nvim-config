@@ -2,13 +2,12 @@
 
 return {
 	"neovim/nvim-lspconfig",
-	version = "v2.*",
 
 	event = { "BufReadPre", "BufNewFile" },
 
 	dependencies = {
 		"mason-org/mason.nvim",
-		{ "mason-org/mason-lspconfig.nvim", version = "v1.*" },
+		"mason-org/mason-lspconfig.nvim",
 	},
 
 	config = function()
@@ -36,7 +35,24 @@ return {
 			end,
 		})
 
-		-- Set up mason-lspconfig with auto-installed servers
+		-- Configure individual servers using the new API
+		vim.lsp.config("*", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("lua_ls", {
+			settings = {
+				Lua = {
+					runtime = { version = "LuaJIT" },
+					workspace = {
+						checkThirdParty = false,
+						library = { vim.env.VIMRUNTIME },
+					},
+				},
+			},
+		})
+
+		-- mason-lspconfig v2 just handles ensure_installed
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"lua_ls",
@@ -50,29 +66,20 @@ return {
 				"bashls",
 				"gopls",
 			},
-			handlers = {
-				-- Default handler: set up all servers with shared capabilities
-				function(server_name)
-					require("lspconfig")[server_name].setup({
-						capabilities = capabilities,
-					})
-				end,
-				-- Override for lua_ls: add Neovim runtime awareness
-				["lua_ls"] = function()
-					require("lspconfig").lua_ls.setup({
-						capabilities = capabilities,
-						settings = {
-							Lua = {
-								runtime = { version = "LuaJIT" },
-								workspace = {
-									checkThirdParty = false,
-									library = { vim.env.VIMRUNTIME },
-								},
-							},
-						},
-					})
-				end,
-			},
+		})
+
+		-- Enable all servers
+		vim.lsp.enable({
+			"lua_ls",
+			"pyright",
+			"ts_ls",
+			"clangd",
+			"html",
+			"cssls",
+			"jsonls",
+			"yamlls",
+			"bashls",
+			"gopls",
 		})
 	end,
 }
